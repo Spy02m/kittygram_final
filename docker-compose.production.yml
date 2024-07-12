@@ -18,7 +18,7 @@ services:
     depends_on:
       - db
     volumes:
-      - static_kittygram:/backend_static
+      - static_kittygram:/static
       - media_kittygram:/media
 
   frontend:
