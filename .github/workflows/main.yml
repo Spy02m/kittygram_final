@@ -6,6 +6,7 @@ on:
       - main
 
 jobs:
+
   tests:
     runs-on: ubuntu-latest
     services:
@@ -24,7 +25,6 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: 3.9
-
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip 
@@ -41,6 +41,7 @@ jobs:
         python -m flake8 backend/
         cd backend/
         python manage.py test
+
   build_and_push_to_docker_hub:
     name: Push Docker image to DockerHub
     runs-on: ubuntu-latest
@@ -64,23 +65,21 @@ jobs:
 
   frontend_tests:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up nodeJS
       uses: actions/setup-node@v3
       with:
         node-version: 18
-
     - name: Install dependencies
       run: |
         cd frontend/
         npm ci
-
     - name: Test frontend
       run: |
         cd frontend/
         npm run test
+
   build_frontend_and_push_to_docker_hub:
     name: Push frontend Docker image to DockerHub
     runs-on: ubuntu-latest
