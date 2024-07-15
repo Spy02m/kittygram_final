@@ -88,5 +88,34 @@ TELEGRAM_TOKEN
 git push
 ```
 Проект автоматически развернется на удаленном сервере.
+ - Настроить сервер Nginx на порт 9000
+```
+sudo nano /etc/nginx/sites-enabled/default
+```
+```
+server {
+    server_name your-domen.com;
+
+    location / {
+        proxy_set_header Host $http_host;
+        proxy_pass http://127.0.0.1:9000;
+    }
+
+    listen 443 ssl;
+    ssl_certificate /etc/letsencrypt/live/your-domen.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/your-domen.com/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+}
+server {
+    if ($host = your-domen.com) {
+        return 301 https://$host$request_uri;
+    }
+
+    listen 80;
+    server_name your-domen.com;
+    return 404;
+}
+```
 ## Автор
 Сергей Баданов
