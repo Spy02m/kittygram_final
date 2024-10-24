@@ -116,6 +116,3 @@ server {
     server_name your-domen.com;
     return 404;
 }
-```
-## Автор
-Сергей Баданов
