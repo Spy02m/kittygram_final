@@ -1,6 +1,4 @@
 # Kittygram
-![Kittygram workflow](https://github.com/spy02m/kittygram_final/actions/workflows/main.yml/badge.svg)
-
 ## Описание
  - Kittygram — социальная сеть для обмена фотографиями любимых питомцев.
   - Проект состоит из бэкенд-приложения на Django и фронтенд-приложения на React.
